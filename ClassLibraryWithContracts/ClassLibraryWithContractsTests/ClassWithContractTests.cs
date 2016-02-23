@@ -18,7 +18,7 @@ namespace ClassLibraryWithContracts.Tests
         }
 
         [Fact]
-        public void RequiresNonNullString_When_Passed_Null_Throws_ArgumentNullException()
+        public void RequiresNonNullString_When_Passed_Null_Throws_Exception()
         {
             var ctr = new ClassWithContract();
             Assert.ThrowsAny<Exception>(() => ctr.RequiresNonNullString(null));
