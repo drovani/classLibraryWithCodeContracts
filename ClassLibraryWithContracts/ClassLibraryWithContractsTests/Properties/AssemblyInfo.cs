@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ClassLibraryWithContractsTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("IFCJ")]
+[assembly: AssemblyCompany("Vigil Projects")]
 [assembly: AssemblyProduct("ClassLibraryWithContractsTests")]
-[assembly: AssemblyCopyright("Copyright © IFCJ 2016")]
+[assembly: AssemblyCopyright("Copyright © Vigil Projects 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

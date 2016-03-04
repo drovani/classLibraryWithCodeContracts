@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ClassLibraryWithContracts")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("IFCJ")]
+[assembly: AssemblyCompany("Vigil Projects")]
 [assembly: AssemblyProduct("ClassLibraryWithContracts")]
 [assembly: AssemblyCopyright("Copyright © Vigil Projects 2016")]
 [assembly: AssemblyTrademark("")]
