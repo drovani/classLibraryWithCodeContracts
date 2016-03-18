@@ -32,16 +32,14 @@ namespace ClassLibraryWithContracts.Tests
 
             Assert.Equal("TestString", ret);
         }
-        [Fact]
-        //[Fact(Skip = "Tests Contract.Requires<TException>, which requires CCRewrite on the build server.")]
+        [Fact(Skip = "Tests Contract.Requires<TException>, which requires CCRewrite on the build server.")]
         public void RequiresNonNullStringGeneric_When_Passed_Null_Throws_ArgumentNullException()
         {
             var ctr = new ClassWithContract();
             Assert.ThrowsAny<Exception>(() => ctr.RequiresNonNullStringGeneric(null));
         }
 
-        [Fact]
-        //[Fact(Skip = "Tests Contract.Requires<TException>, which requires CCRewrite on the build server.")]
+        [Fact(Skip = "Tests Contract.Requires<TException>, which requires CCRewrite on the build server.")]
         public void RequiresNonNullStringGeneric_Returns_String_When_NotEmpty()
         {
             var ctr = new ClassWithContract();
