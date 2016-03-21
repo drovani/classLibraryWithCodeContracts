@@ -1,51 +1,43 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Diagnostics.Contracts;
-using Xunit;
 
 namespace ClassLibraryWithContracts.Tests
 {
+    [TestClass]
     public class ClassWithContractTests
     {
-        public ClassWithContractTests()
-        {
-            Contract.ContractFailed += (sender, e) =>
-            {
-                e.SetHandled();
-                e.SetUnwind();
-
-                throw new Exception(e.FailureKind + ": " + e.Message);
-            };
-        }
-
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void RequiresNonNullString_When_Passed_Null_Throws_Exception()
         {
             var ctr = new ClassWithContract();
-            Assert.ThrowsAny<Exception>(() => ctr.RequiresNonNullString(null));
+            ctr.RequiresNonNullString(null);
         }
 
-        [Fact]
+        [TestMethod]
         public void RequiresNonNullString_Returns_String_When_NotEmpty()
         {
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullString("TestString");
 
-            Assert.Equal("TestString", ret);
+            Assert.AreEqual("TestString", ret);
         }
-        [Fact(Skip = "Tests Contract.Requires<TException>, which requires CCRewrite on the build server.")]
+        [TestMethod]
+        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void RequiresNonNullStringGeneric_When_Passed_Null_Throws_ArgumentNullException()
         {
             var ctr = new ClassWithContract();
-            Assert.ThrowsAny<Exception>(() => ctr.RequiresNonNullStringGeneric(null));
+            ctr.RequiresNonNullStringGeneric(null);
         }
 
-        [Fact(Skip = "Tests Contract.Requires<TException>, which requires CCRewrite on the build server.")]
+        [TestMethod]
         public void RequiresNonNullStringGeneric_Returns_String_When_NotEmpty()
         {
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullStringGeneric("TestString");
 
-            Assert.Equal("TestString", ret);
+            Assert.AreEqual("TestString", ret);
         }
     }
 }
