@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Diagnostics.Contracts;
+using Xunit;
 
 namespace ClassLibraryWithContracts.Tests
 {
-    [TestClass]
     public class ClassWithContractTests
     {
-        [TestMethod]
+        [Fact]
         public void RequiresNonNullString_When_Passed_Null_Fires_ContractFailed()
         {
             bool contractFailed = false;
@@ -19,29 +18,28 @@ namespace ClassLibraryWithContracts.Tests
 
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullString(null);
-            Assert.IsTrue(contractFailed);
+            Assert.True(contractFailed);
         }
 
-        [TestMethod]
+        [Fact]
         public void RequiresNonNullString_Returns_String_When_NotEmpty()
         {
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullString("TestString");
 
-            Assert.AreEqual("TestString", ret);
+            Assert.Equal("TestString", ret);
         }
 
-        [TestMethod]
+        [Fact]
         public void RequiresNonNullString_Generic_Returns_String_When_NotEmpty()
         {
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullString_Generic("TestString");
 
-            Assert.AreEqual("TestString", ret);
+            Assert.Equal("TestString", ret);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void RequiresNonNullString_Generic_When_Passed_Null_Throws_Exception()
         {
             Contract.ContractFailed += (o, e) =>
@@ -50,7 +48,7 @@ namespace ClassLibraryWithContracts.Tests
             };
 
             var ctr = new ClassWithContract();
-            string ret = ctr.RequiresNonNullString_Generic(null);
+            Assert.Throws<ArgumentNullException>(() => ctr.RequiresNonNullString_Generic(null));
         }
     }
 }

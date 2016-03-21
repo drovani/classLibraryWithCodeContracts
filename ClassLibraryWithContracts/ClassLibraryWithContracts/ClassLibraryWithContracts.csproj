@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -148,7 +150,7 @@
   <PropertyGroup>
     <CodeContractsInstallDir>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\packages\DotNet.Contracts.1.10.10126.4\'))</CodeContractsInstallDir>
   </PropertyGroup>
-  <Import Project="$(CodeContractsInstallDir)\MsBuild\v$(VisualSTudioVersion)\Microsoft.CodeContracts.targets"/>
+  <Import Project="$(CodeContractsInstallDir)\MsBuild\v$(VisualSTudioVersion)\Microsoft.CodeContracts.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
