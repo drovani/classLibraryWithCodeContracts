@@ -8,11 +8,12 @@ namespace ClassLibraryWithContracts.Tests
     public class ClassWithContractTests
     {
         [TestMethod]
-        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void RequiresNonNullString_When_Passed_Null_Throws_Exception()
         {
             var ctr = new ClassWithContract();
-            ctr.RequiresNonNullString(null);
+            string ret = ctr.RequiresNonNullString(null);
+
+            Assert.IsNull(ret);
         }
 
         [TestMethod]
@@ -25,6 +26,7 @@ namespace ClassLibraryWithContracts.Tests
         }
         [TestMethod]
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
+        [Ignore]
         public void RequiresNonNullStringGeneric_When_Passed_Null_Throws_ArgumentNullException()
         {
             var ctr = new ClassWithContract();
@@ -32,6 +34,7 @@ namespace ClassLibraryWithContracts.Tests
         }
 
         [TestMethod]
+        [Ignore]
         public void RequiresNonNullStringGeneric_Returns_String_When_NotEmpty()
         {
             var ctr = new ClassWithContract();
