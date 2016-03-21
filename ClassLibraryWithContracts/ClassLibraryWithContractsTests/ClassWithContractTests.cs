@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Diagnostics.Contracts;
 
 namespace ClassLibraryWithContracts.Tests
@@ -10,10 +9,16 @@ namespace ClassLibraryWithContracts.Tests
         [TestMethod]
         public void RequiresNonNullString_When_Passed_Null_Throws_Exception()
         {
+            bool contractFailed = false;
+            Contract.ContractFailed += (o, e) =>
+            {
+                e.SetHandled();
+                contractFailed = true;
+            };
+
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullString(null);
-
-            Assert.IsNull(ret);
+            Assert.IsTrue(contractFailed);
         }
 
         [TestMethod]
@@ -21,24 +26,6 @@ namespace ClassLibraryWithContracts.Tests
         {
             var ctr = new ClassWithContract();
             string ret = ctr.RequiresNonNullString("TestString");
-
-            Assert.AreEqual("TestString", ret);
-        }
-        [TestMethod]
-        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
-        [Ignore]
-        public void RequiresNonNullStringGeneric_When_Passed_Null_Throws_ArgumentNullException()
-        {
-            var ctr = new ClassWithContract();
-            ctr.RequiresNonNullStringGeneric(null);
-        }
-
-        [TestMethod]
-        [Ignore]
-        public void RequiresNonNullStringGeneric_Returns_String_When_NotEmpty()
-        {
-            var ctr = new ClassWithContract();
-            string ret = ctr.RequiresNonNullStringGeneric("TestString");
 
             Assert.AreEqual("TestString", ret);
         }
