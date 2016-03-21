@@ -9,6 +9,7 @@ namespace ClassLibraryWithContracts
         {
             Contract.Requires(arg != null);
             Contract.Ensures(Contract.Result<string>() == arg);
+            Contract.Ensures(Contract.Result<string>() != null);
 
             return arg;
         }
@@ -16,6 +17,7 @@ namespace ClassLibraryWithContracts
         {
             Contract.Requires<ArgumentNullException>(arg != null);
             Contract.Ensures(Contract.Result<string>() == arg);
+            Contract.Ensures(Contract.Result<string>() != null);
 
             return arg;
         }
